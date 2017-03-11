@@ -5,39 +5,32 @@ class eventService {
   save (event) {
     return new Promise((resolve, reject) => {
       database.getDb().then(db => {
-
-        db.collection('event').findOne({ "event": event }, (err, result) => {
-            if (err) {
-              return reject(err);
-            }
-            if (!result) {
               db.collection('event').insertOne(event, (err, result) => {
                 if (err) {
                   return reject(err);
                 }
                 resolve(result._id);
               });
-            }
-          });
-      }).catch(err => reject(err));
+            }).catch(reject);;
     });
   }
+  
 
   getEventsById(id) {
     return new Promise((resolve, reject) => {
 
       database.getDb().then(db => {
-        db.collection('event').findOne({ "id": id }, (err, user) => {
+        db.collection('event').findOne({ "_id": id }, (err, event) => {
           if (err) {
             return reject(err);
           }
-          if (!user) {
+          if (!event) {
             return reject({
               code: 404,
               message: 'Event not found. Invalid event'
             });
           }
-          resolve(user);
+          resolve(event);
         });
       }).catch(reject);
     });
@@ -46,13 +39,12 @@ class eventService {
   getEventsByGeoLocation(long,lat){
     return new Promise((resolve, reject) => {
 
-      database.getDb().then(db => {
-          long 
-        db.collection('event').findAll({"long": long},{"lat": lat}, (err, contract) => {
+      database.getDb().then(db => {        
+        db.collection('event').findAll({"long": long},{"lat": lat}, (err, events) => {
           if (err) {
             return reject(err);
           }
-          resolve(contract.eventService);
+          resolve(events);
         });
       }).catch(reject);
     });

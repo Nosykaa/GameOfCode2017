@@ -25,7 +25,7 @@ module.exports = (app) => {
       .catch(err =>  apiHelper.formatError(res, err));
   });
 
-  app.get('/event/:long/lat', (req, res) => {
+  app.get('/event/:long/:lat', (req, res) => {
       eventService.getEventsByGeoLocation(req.params.long,req.params.lat)
       .then(user => res.status(200).json(user))
       .catch(err =>  apiHelper.formatError(res, err));
