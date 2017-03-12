@@ -40,7 +40,7 @@ module.exports = (app) => {
   });
 
 
-  app.get('/event/interest/:uid', (req, res) => { 
+  app.get('/event/interestCount/:uid', (req, res) => { 
       eventService.getInterest(req.params.uid)
       .then(user => res.status(200).json(user))
       .catch(err =>  apiHelper.formatError(res, err));
