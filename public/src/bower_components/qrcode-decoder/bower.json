@@ -1,0 +1,12 @@
+{
+  "name": "qrcode-decoder",
+  "version": "1.0.0",
+  "description": "\n    \n    \n    \n  ",
+  "main": "qrcode-decoder.html",
+  "keywords": [
+    "web-components"
+  ],
+  "dependencies": {
+    "qcode-decoder": "^0.1.0"
+  }
+}
