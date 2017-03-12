@@ -1,0 +1,243 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    color: #333;
+    font-size: 1em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.splashscreen-overlay {
+    z-index: 9999;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.splashscreen-overlay.hide {
+    	-webkit-animation-name: hideSplash;
+	animation-name: hideSplash;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function: linear;
+	-webkit-animation-duration: 400ms;
+	animation-duration: 400ms;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+@keyframes hideSplash {
+	0% {
+		opacity: 1;
+		-webkit-transform: scale3d(1,1,1) translateX(0);
+		transform: scale3d(1,1,1) translateX(0)
+	}
+	50% {
+		opacity: 1
+        transform: scale3d(.5,.5,.5) translateX(0)
+	}
+	100%,
+	60% {
+		opacity: 0;
+		-webkit-transform: scale3d(0,0,0) translateX(900%);
+		transform: scale3d(0,0,0) translateX(900%)
+	}
+}
+
+
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+}
+
+.wrapper--flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper--flex-center {
+    background-color: #0496FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header .getmeout-logo-wrapper {
+    max-width: 4rem;
+    margin: 1rem 1rem 1rem auto;
+}
+
+.getmeout-logo {
+    color: white;
+    text-align: center;
+    font-style: italic;
+    font-size: 2em;
+    line-height: 1;
+    transform: rotate(-12deg);
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+header .getmeout-logo {
+    font-size: 1em;
+}
+
+.getmeout-logo--blue {
+    color: #0496FF;
+}
+
+.getmeout-logo h1,
+.getmeout-logo p {
+    margin: 0;
+}
+
+.getmeout-logo h1,
+.getmeout-logo p strong {
+    font-weight: 900;
+}
+
+.getmeout-logo i {
+    color: #FFBC42;
+}
+
+header {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .1);
+}
+
+.content {
+    background-color: rgba(248, 248, 248, 0.49);
+    height: 100%;
+}
+
+.content h1,
+.content h2 {
+    margin: 1rem;
+}
+
+.prompt {
+    margin: 1rem;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .1);
+    background-color: white;
+    border-radius: 3px;
+}
+
+.prompt--ev-viral {
+    padding: 1.5rem 1rem;
+    border: 1px solid rgba(0, 0, 0, .1);
+    text-align: left;
+    position: relative;
+}
+
+.prompt-msg {
+    margin: 2rem 0;
+}
+
+.prompt-btn-wrapper {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-align: center;
+}
+
+.activity-btn-wrapper {
+    width: auto;
+    margin: 1rem;
+}
+
+.btn {
+    padding: .75rem .5rem;
+    margin: 0 .5rem;
+    background-color: transparent;
+    border-radius: 3px;
+    min-width: 5rem;
+}
+
+.btn--big {
+    font-size: 1.5rem;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn--proceed {
+    border: 1px solid #0496FF;
+    color: #0496FF;
+}
+
+.btn--skip {
+    border: 1px solid #D81159;
+    color: #D81159;
+}
+
+.ev-viral-amount {
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: .25rem;
+    border-radius: 3px;
+    font-weight: 700;
+    right: 0.5rem;
+    top: .5rem;
+}
+
+.amount-counter {}
+
+.category-wrapper {
+    position: absolute;
+    bottom: 1rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    min-height: 6rem;
+}
+
+.category-hint .fa {
+    width: 100%;
+}
+
+.category-hint-title {
+    text-transform: uppercase;
+    padding: .5rem 1.5rem;
+    text-align: center;
+    display: block;
+}
+
+.select-activity {
+    padding: 0;
+    font-size: 1.5rem;
+    color: #0496FF;
+}
+
+.select-activity-item {
+    list-style: none;
+    padding: 1rem;
+    margin: .5rem 0;
+}
+
+.ev-place {
+    background-color: white;
+    margin: 1rem;
+}
+
+.ev-place-name {
+    margin: 0;
+    padding: 1rem;
+}
+
+.ev-place-details {
+    width: 5rem;
+}
+
+.ev-place-location {
+    width: 5rem;
+}
+
+.hidden {
+    display: none!important;
+    visibility: hidden;
+}
