@@ -102,6 +102,17 @@ class eventService {
     
     });   
    }
+
+
+    getInterest(uid){
+    return new Promise((resolve, reject) => {
+      database.getDb().then(db => {
+
+        let count = db.collection('event').find({ UID : uid,  timestamp: { $gte : new Date().setMonth(new Date().getMonth()-6) }}).count()
+        resolve(count);
+        });
+      }).catch(reject);
+  }
 }
 
         
