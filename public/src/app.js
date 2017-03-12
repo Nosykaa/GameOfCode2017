@@ -3,7 +3,8 @@
     'home',
     'splashscreen',
     'eventselection',
-    'eventresults'
+    'eventresults',
+    'map'
    ]);
 
   app.config(function($routeProvider, $compileProvider) {
@@ -15,6 +16,7 @@
       .when('/home', { template: '<home></home>' })
       .when('/eventselection', { template: '<eventselection></eventselection>' })
       .when('/eventresults', { template: '<eventresults></eventresults>' })
+      .when('/map', { template: '<map></map>' })
       .otherwise({ redirectTo: '/' });
   });
 
