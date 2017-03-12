@@ -241,3 +241,11 @@ header {
     display: none!important;
     visibility: hidden;
 }
+.push-right{
+   margin-left : auto;
+   float: right;
+   position:absolute;
+   right:0.5rem;
+   top:5rem;
+   color:black;	
+}
