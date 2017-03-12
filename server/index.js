@@ -21,29 +21,52 @@ app.listen(process.env.NODE_PORT, () => {
 
 function initFactory() {
   let database = require('./services/db');
-  fs.readFileSync('event.csv', 'utf8', function (err,data) {
-    if (err) {
-      return console.log(err);
-    }
-    if (data == undefined || data.length == 0) {
-					console.log("no file");
-					return;
-		}
-    var fieldList = data.split(';').filter(Boolean);
-    database.getDb()
-      .then(db => {
-          db.collection('event').deleteMany({});
-          /*for (let i = 0;fieldList.fields.lenght; i++) {
-            db.collection('event').insertOne(jsonData.fields, err => {
-                if (err) {
-                  throw err;
-                }
-              });
-          }*/
-      })
-      .catch(err => {
-        throw err;
+  database.getDb()
+    .then(db => {
+      fs.readFile('event.csv', 'utf8', function (err, data) {
+        if (err) {
+              console.log("errrr")
+              throw err;
+        }
+        if (data == undefined || data.length == 0) {
+              console.log("errrr")
+              throw "err";
+        }
+        let list = data.split('\n').filter(Boolean);
+        db.collection('event').deleteMany({});
+        for (let i = 1; i < (list.length); i++) {
+          let line = list[i];
+          let fieldList = line.split(';').filter(Boolean);
+          
+          let coordinates = [0,0];
+          if (fieldList[4] != undefined && fieldList[4].length != 0) {
+            coordinates = fieldList[4].split(',').filter(Boolean);
+          }
+          let eventJSON = {
+            UID: fieldList[0],
+            title: fieldList[1],
+            description: fieldList[2],
+            startDate: fieldList[7],
+            endDate: fieldList[8],
+            tags: fieldList[3],
+            longiture: coordinates[0],
+            latitude: coordinates[1],
+            address: fieldList[6],
+            placeName: fieldList[5],
+          }
+          db.collection('event').insertOne(eventJSON, err => {
+            if (err) {
+              console.log("errrr")
+              throw err;
+            }
+          });
+          
+          
+        }
+
       });
-  }); 
-  
-}
+    })
+    .catch(err => {
+      throw err;
+     });
+  }
