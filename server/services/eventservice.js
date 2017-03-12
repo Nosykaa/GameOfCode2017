@@ -40,16 +40,18 @@ class eventService {
     return new Promise((resolve, reject) => {
 
       database.getDb().then(db => {        
-        db.collection('event').findAll({"long": long},{"lat": lat}, (err, events) => {
-          if (err) {
-            return reject(err);
+        db.collection('event').find(location,{ $near :
+          {
+            $geometry: { type: "Point",  coordinates: [{"long": long},{"lat": lat} ] },
+            $minDistance: 50,
+            $maxDistance: 5000
           }
-          resolve(events);
-        });
+       });
       }).catch(reject);
     });
   }
 }
 
+        
 module.exports = new eventService();
 
