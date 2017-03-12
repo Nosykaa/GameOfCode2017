@@ -36,8 +36,6 @@ class eventService {
     });
   }
 
- 
-
   getEventsByGeoLocation(long,lat){
     return new Promise((resolve, reject) => {
       database.getDb().then(db => {     
@@ -114,6 +112,15 @@ class eventService {
       console.log(d);
         let count = db.collection('event').find({ UID : uid,"history.timestamp": { $gte : new Date(d) }}).count()
         resolve(count);
+        }).catch(reject);
+      });
+  }
+
+   getDistinctEventTags(){
+    return new Promise((resolve, reject) => {
+      database.getDb().then(db => {
+       let dis = db.collection('event').distinct("tags");
+        resolve(dis);
         }).catch(reject);
       });
   }

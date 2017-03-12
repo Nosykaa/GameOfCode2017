@@ -46,4 +46,10 @@ module.exports = (app) => {
       .catch(err =>  apiHelper.formatError(res, err));
   });
 
+  app.get('/event/distinctEventTags', (req, res) => { 
+      eventService.getDistinctEventTags()
+      .then(user => res.status(200).json(user))
+      .catch(err =>  apiHelper.formatError(res, err));
+  });
+
  };
