@@ -43,7 +43,7 @@ function initFactory() {
           
           let coordinates = [0,0];
           if (fieldList[4] != undefined && fieldList[4].length != 0) {
-            coordinates = fieldList[4].split(',').filter(Boolean);
+            coordinates = fieldList[4].split(', ').filter(Boolean);
           }
           let eventJSON = {
             UID: fieldList[0],
@@ -52,10 +52,11 @@ function initFactory() {
             startDate: fieldList[7],
             endDate: fieldList[8],
             tags: fieldList[3],
-            longiture: coordinates[0],
+            longitude: coordinates[0],
             latitude: coordinates[1],
             address: fieldList[6],
             placeName: fieldList[5],
+            history:[]
           }
           db.collection('event').insertOne(eventJSON, err => {
             if (err) {

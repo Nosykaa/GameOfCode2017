@@ -33,4 +33,17 @@ module.exports = (app) => {
       .catch(err =>  apiHelper.formatError(res, err));
   });
 
+  app.post('/event/interest/:ipAddress/:uid', (req, res) => {    
+      eventService.addInterest(req.params.ipAddress, req.params.uid)
+      .then(() => res.status(200).end())
+      .catch(err =>  apiHelper.formatError(res, err));
+  });
+
+
+  app.get('/event/interest/:uid', (req, res) => { 
+      eventService.getInterest(req.params.uid)
+      .then(user => res.status(200).json(user))
+      .catch(err =>  apiHelper.formatError(res, err));
+  });
+
  };
