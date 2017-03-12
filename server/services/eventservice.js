@@ -107,12 +107,17 @@ class eventService {
     getInterest(uid){
     return new Promise((resolve, reject) => {
       database.getDb().then(db => {
-
-        let count = db.collection('event').find({ UID : uid,  timestamp: { $gte : new Date().setMonth(new Date().getMonth()-6) }}).count()
+      let d = new Date(),
+      n = d.getDate();
+      d.setMonth(d.getMonth() - 6);
+   
+      console.log(d);
+        let count = db.collection('event').find({ UID : uid,"history.timestamp": { $gte : new Date(d) }}).count()
         resolve(count);
-        });
-      }).catch(reject);
+        }).catch(reject);
+      });
   }
+
 }
 
         
