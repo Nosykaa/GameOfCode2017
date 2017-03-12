@@ -11,7 +11,7 @@
     $compileProvider.preAssignBindingsEnabled(true);
 
     $routeProvider
-      .when('/', { template: '<splashscreen></splashscreen>' })
+      .when('/', { template: '<home></home>' })
       .when('/home', { template: '<home></home>' })
       .when('/eventselection', { template: '<eventselection></eventselection>' })
       .when('/eventresults', { template: '<eventresults></eventresults>' })

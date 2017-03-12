@@ -10,11 +10,11 @@
   </header>
   <div class="content">
     <h1>How about:</h1>
+
     <ul class="select-activity">
-      <a href="http://localhost:3000/#!/eventresults"><li class="select-activity-item">Dinner</li></a>
-      <a href="http://localhost:3000/#!/eventresults"><li class="select-activity-item">Cinema</li></a>
-      <a href="http://localhost:3000/#!/eventresults"><li class="select-activity-item">Jogging</li></a>
-      <a href="http://localhost:3000/#!/eventresults"><li class="select-activity-item">Swimming</li></a>
+      <a href="http://localhost:3000/#!/eventresults" ng-repeat="tag in $ctrl.tagList">
+        <li class="select-activity-item">{{tag}}</li>
+      </a>
     </ul>
     <div class="activity-btn-wrapper">
       <button class="btn btn--big btn--proceed" id="altEvent">
