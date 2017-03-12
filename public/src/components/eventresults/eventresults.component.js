@@ -4,8 +4,12 @@
     .module('eventresults', [])
     .component('eventresults', {
       templateUrl: 'components/eventresults/template.html',
-      controller: function ($scope, $mdDialog, $http) {
-      
+
+      controller: function ($scope, $mdDialog, $http, myService) {
+       $scope.selectedTag = myService.get(function(res){
+          $scope.selectedTag = res;
+        });
+        
        this.tagList = $http.get("http://localhost:3000/event/byTags/restaurant")
           .then(function (res) {
             this.tagList = res.data;
@@ -23,7 +27,7 @@
           }.bind(this))
           .catch(function (err) {
             console.error(err);
-          });;
+          });;       
     }
 
 
