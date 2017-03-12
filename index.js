@@ -68,7 +68,6 @@ function initFactory() {
             isEvent:fieldList[9] == "TRUE",
             history:[{ ipAddress : "31231231", timestamp : new Date()}]
           }
-          console.log(eventJSON.tags + "   " + eventJSON.UID)
           db.collection('event').insertOne(eventJSON, err => {
             if (err) {
               console.log("errrr")

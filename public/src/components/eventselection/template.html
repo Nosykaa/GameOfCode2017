@@ -12,7 +12,7 @@
     <h1>How about:</h1>
 
     <ul class="select-activity">
-      <a href="http://localhost:3000/#!/eventresults" ng-repeat="tag in $ctrl.tagList">
+      <a href="http://localhost:3000/#!/eventresults" ng-repeat="tag in $ctrl.tagList" ng-click="$ctrl.getEventsFromTags(tag)">
         <li class="select-activity-item">{{tag}}</li>
       </a>
     </ul>

@@ -4,7 +4,7 @@
     .module('eventselection', [])
     .component('eventselection', {
       templateUrl: 'components/eventselection/template.html',
-      controller: function ($scope, $mdDialog, $http) {
+      controller: function ($scope, $mdDialog, $http, myService) {
         
         this.tagList = $http.get("http://localhost:3000/event/distinctEventTags")
           .then(function (res) {
@@ -15,6 +15,10 @@
             console.error(err);
           });;
 
+        this.getEventsFromTags  = function(tag) {
+            this.selectedTag = tag;
+            myService.set(tag);
+        }
         
     }
 });
