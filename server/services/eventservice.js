@@ -5,6 +5,7 @@ class eventService {
   save (event) {
     return new Promise((resolve, reject) => {
       database.getDb().then(db => {
+        event.history = [];
               db.collection('event').insertOne(event, (err, result) => {
                 if (err) {
                   return reject(err);
