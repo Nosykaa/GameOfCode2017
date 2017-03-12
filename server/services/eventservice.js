@@ -36,6 +36,28 @@ class eventService {
     });
   }
 
+  getEventsByTag(tag) {
+    return new Promise((resolve, reject) => {
+      database.getDb().then(db => {
+
+        db.collection('event').find({ tags : tag }).toArray(function(err, events){
+          if (err) {
+            return reject(err);
+          }
+          if (!events) {
+            return reject({
+              code: 404,
+              message: 'events not found. Invalid events'
+            });
+          }
+          console.log("try" + events)
+
+          resolve(events);
+        });
+      }).catch(reject);
+    });
+  }
+
   getEventsByGeoLocation(long,lat){
     return new Promise((resolve, reject) => {
       database.getDb().then(db => {     
@@ -102,7 +124,7 @@ class eventService {
    }
 
 
-    getInterest(uid){
+  getInterest(uid){
     return new Promise((resolve, reject) => {
       database.getDb().then(db => {
       let d = new Date(),

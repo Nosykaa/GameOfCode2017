@@ -52,4 +52,10 @@ module.exports = (app) => {
       .catch(err =>  apiHelper.formatError(res, err));
   });
 
+  app.get('/event/byTags/:tag', (req, res) => { 
+      eventService.getEventsByTag(req.params.tag)
+      .then(user => res.status(200).json(user))
+      .catch(err =>  apiHelper.formatError(res, err));
+  });
+
  };

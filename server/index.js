@@ -56,6 +56,7 @@ function initFactory() {
             latitude: coordinates[1],
             address: fieldList[6],
             placeName: fieldList[5],
+            isEvent:fieldList[9] == "TRUE",
             history:[{ ipAddress : "31231231", timestamp : new Date()}]
           }
           db.collection('event').insertOne(eventJSON, err => {
