@@ -4,14 +4,13 @@
  * @requires module:server/api/helper
  */
 
-const eventService = require('../services/event');
+const eventService = require('../services/eventservice');
 const apiHelper = require('./helper');
 
 module.exports = (app) => {
 
 //callback 
   app.post('/event/addevent', (req, res) => {
-      
     if (!req.body.event)
       return apiHelper.formatError(res, {code: 403, message:'Event object is required'});
       eventService.save(req.body.event)
@@ -19,13 +18,16 @@ module.exports = (app) => {
       .catch(err =>  apiHelper.formatError(res, err));
   });
 
-  app.get('/event/:id', (req, res) => {
-      eventService.getEventsById(req.params.id)
+  app.get('/event/oneByUID/:uid', (req, res) => {
+      console.log(req.params.uid)
+      eventService.getEventsById(req.params.uid)
       .then(user => res.status(200).json(user))
       .catch(err =>  apiHelper.formatError(res, err));
   });
 
-  app.get('/event/:long/:lat', (req, res) => {
+
+
+  app.get('/event/byGeo/:long/:lat', (req, res) => {
       eventService.getEventsByGeoLocation(req.params.long,req.params.lat)
       .then(user => res.status(200).json(user))
       .catch(err =>  apiHelper.formatError(res, err));

@@ -12,6 +12,9 @@ app.use(bodyParser.json({ limit: '500mb' }));
 
 //require('./api/event')(app);
 require('./api/user')(app);
+require('./api/event')(app);
+require('./api/interested')(app);
+require('./api/logging')(app);
 
 app.listen(process.env.NODE_PORT, () => {
   console.log('Server getMeOut App listenning on port ' + process.env.NODE_PORT);

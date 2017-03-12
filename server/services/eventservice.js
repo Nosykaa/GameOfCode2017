@@ -16,11 +16,11 @@ class eventService {
   }
   
 
-  getEventsById(id) {
+  getEventsById(uid) {
     return new Promise((resolve, reject) => {
-
       database.getDb().then(db => {
-        db.collection('event').findOne({ "_id": id }, (err, event) => {
+
+        db.collection('event').findOne({ UID : uid }, (err, event) => {
           if (err) {
             return reject(err);
           }
@@ -35,6 +35,8 @@ class eventService {
       }).catch(reject);
     });
   }
+
+ 
 
   getEventsByGeoLocation(long,lat){
     return new Promise((resolve, reject) => {

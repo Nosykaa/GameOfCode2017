@@ -4,7 +4,7 @@
  * @requires module:server/api/helper
  */
 
-const eventService = require('../services/interested');
+const eventService = require('../services/interestedservice');
 const apiHelper = require('./helper');
 
 module.exports = (app) => {
