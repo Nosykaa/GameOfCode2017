@@ -156,6 +156,8 @@ header {
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, .1);
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
 }
 
 .content {
@@ -222,6 +224,11 @@ header {
     color: #D81159;
 }
 
+.btn--back {
+    margin-left: 0;
+    color: #0496FF;
+}
+
 .ev-viral-amount {
     position: absolute;
     border: 1px solid rgba(0, 0, 0, .1);
@@ -276,6 +283,7 @@ header {
 .ev-place-name {
     margin: 0;
     padding: 1rem;
+    font-size: 1.5rem;
 }
 
 .ev-place-details {
@@ -299,5 +307,4 @@ header {
 
 .push-right .btn--proceed {
     color: #333;
-    border:0;
 }
